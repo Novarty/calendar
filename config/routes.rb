@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'calendar/index'
-
+  root 'meetings#welcome'
   resources :meetings
   devise_for :users
-  # get '/calendar' => 'calendar#index'
+  get '/calendar' => 'meetings#index'
 end

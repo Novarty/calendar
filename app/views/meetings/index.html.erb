@@ -1,36 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<h1>События</h1>
+<h1 style="text-align: center">Event calendar</h1>
 <div id="articles">
   <h2 id="month">
     <%= link_to "<", date: @date.prev_month %>
     <%= @date.strftime("%B %Y") %>
     <%= link_to ">", date: @date.next_month %>
   </h2>
-
-  <%= calendar @date do |date| %>
-      <%= date.day %>
-      <% if @meetings_by[date] %>
-          <ul>
-            <% @meetings_by[date].each do |meeting| %>
-                <li><%= link_to meeting.name, meeting %></li>
-            <% end %>
-          </ul>
+  <div class="row">
+    <div class="col-md-6">
+      <%= calendar @date do |date| %>
+          <%= date.day %>
+          <% if @meetings_by[date] %>
+              <ul>
+                <% @meetings_by[date].each do |meeting| %>
+                    <li><%= link_to meeting.name, meeting %></li>
+                <% end %>
+              </ul>
+          <% end %>
       <% end %>
-  <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default panel-body">
+      <h3>Events</h3>
+
+        <table class="table table-striped">
+          <% @meetings.each do |meeting| %>
+              <tr>
+                <td><%= meeting.name %></td>
+                <td><%= meeting.start_time %></td>
+                <td><%= link_to 'Details', meeting %></td>
+                <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+                <td><%= link_to 'Delete', meeting, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              </tr>
+          <% end %>
+        </table>
+        <br>
+        <%= link_to 'New Meeting', new_meeting_path, class: "btn btn-default" %>
+        <%= link_to "Sign out", destroy_user_session_path, method: "delete", class: "btn btn-info" %>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
-<table>
-  <br>
-  <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.name %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      </tr>
-  <% end %>
-</table>
-<%= link_to 'New Meeting', new_meeting_path %>
