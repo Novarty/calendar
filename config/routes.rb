@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root 'meetings#welcome'
   resources :meetings
-  devise_for :users
   get '/calendar' => 'meetings#index'
+  get 'users/:id', to: 'users#show', as: :user
 end

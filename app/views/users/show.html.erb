@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="form-signin">
+    <div class="panel panel-default panel-body">
+      <h1 class="form-signin-heading">Profile</h1>
+      <br>
+      <div class="field">
+        <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %> </p>
+      </div>
+
+      <div class="field">
+        <p><strong>Email:</strong> <%= @user.email %></p>
+      </div>
+      <br>
+        <%= link_to 'Edit profile data', '/users/edit', class:"btn btn-lg btn-info" %>
+        <%= link_to 'Back', '/calendar', class: "btn btn-lg btn-default" %>
+
+
+    </div>
+  </div>
+</div>

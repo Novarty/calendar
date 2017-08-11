@@ -1,5 +1,9 @@
-<h1>New Meeting</h1>
+<div class="container">
+  <div class="form-signin">
+    <div class="panel panel-default panel-body">
+      <h1>Creating Meeting</h1>
+      <%= render 'form', meeting: @meeting %>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', meeting: @meeting %>
-
-<%= link_to 'Back', meetings_path %>

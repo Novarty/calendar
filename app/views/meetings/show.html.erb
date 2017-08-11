@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="form-signin">
+    <div class="panel panel-default panel-body">
+      <h1><%= @meeting.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @meeting.name %>
-</p>
+      <strong>Start time:</strong>
+      <p class="bg-warning">
+        <%= @meeting.start_time %>
+      </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @meeting.start_time %>
-</p>
+      <strong>End time:</strong>
+      <p class="bg-warning">
+        <%= @meeting.end_time %>
+      </p>
 
-<p>
-  <strong>End time:</strong>
-  <%= @meeting.end_time %>
-</p>
+      <%= link_to 'Edit', edit_meeting_path(@meeting), class: 'btn btn-lg btn-success' %>
+      <%= link_to 'Back', meetings_path, class: 'btn btn-lg btn-info' %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
