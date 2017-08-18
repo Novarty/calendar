@@ -4,9 +4,7 @@ class MeetingsController < ApplicationController
 
   # GET /meetings
   def index
-    @meetings = Meeting.all
-    @meetings_by = @meetings.group_by(&:start_time)
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+    @meetings = Meeting.where("user_id = #{current_user.id}")
   end
 
   # GET /meetings/1
@@ -50,6 +48,10 @@ class MeetingsController < ApplicationController
   end
 
   def welcome
+  end
+
+  def all
+    @meetings = Meeting.where("user_id = #{current_user.id}")
   end
 
   private

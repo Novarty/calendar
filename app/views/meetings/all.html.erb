@@ -1,0 +1,17 @@
+<div class="panel panel-default panel-body">
+  <h3>My events</h3>
+
+  <table class="table table-striped">
+    <% @meetings.each do |meeting| %>
+        <tr>
+          <td><%= meeting.name %></td>
+          <td><%= meeting.start_time %></td>
+          <td><%= link_to 'Details', meeting %></td>
+          <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+          <td><%= link_to 'Delete', meeting, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= link_to 'New Meeting', new_meeting_path, class: "btn btn-default" %>
+</div>

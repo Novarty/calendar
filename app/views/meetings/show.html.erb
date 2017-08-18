@@ -2,7 +2,7 @@
   <div class="form-signin">
     <div class="panel panel-default panel-body">
       <h1><%= @meeting.name %></h1>
-
+      <br>
       <strong>Start time:</strong>
       <p class="bg-warning">
         <%= @meeting.start_time %>
@@ -12,7 +12,7 @@
       <p class="bg-warning">
         <%= @meeting.end_time %>
       </p>
-
+      <br>
       <%= link_to 'Edit', edit_meeting_path(@meeting), class: 'btn btn-lg btn-success' %>
       <%= link_to 'Back', meetings_path, class: 'btn btn-lg btn-info' %>
     </div>
